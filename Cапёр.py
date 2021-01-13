@@ -55,7 +55,7 @@ class Minesweeper(Board):
                             and (self.list[index].y_pos < y) and
                             ((self.list[index].y_pos + SCALE) > y)):
                         if types == 1:
-                            draw_point(screen, [ 255, 255, 0 ], [ self.list[ index ].x_pos, self.list[ index ].y_pos ])
+                            draw_point(screen, [255, 255, 0], [self.list[index].x_pos, self.list[index].y_pos])
                         else:
                             draw_point(screen, [0, 0, 255], [self.list[index].x_pos, self.list[index].y_pos])
 
@@ -65,10 +65,14 @@ class Minesweeper(Board):
                             and (self.list[index].y_pos < y) and
                             ((self.list[index].y_pos + SCALE) > y)):
                         if types == 1:
-                            draw_point(screen, [255, 255, 255],
-                                       [self.list[index].x_pos, self.list[index].y_pos])
+                            flag = pygame.image.load('flag.jpg')
+                            screen.blit(flag, (self.list[index].x_pos+12, self.list[index].y_pos+12))
+                            # draw_point(screen, [255, 255, 255],
+                            #            [self.list[index].x_pos, self.list[index].y_pos])
                         else:
-                            draw_point(screen, [255, 0, 0], [self.list[index].x_pos, self.list[index].y_pos])
+                            flag = pygame.image.load('mines.jpg')
+                            screen.blit(flag, (self.list[ index ].x_pos + 12, self.list[ index ].y_pos + 12))
+                            # draw_point(screen, [ 255, 0, 0 ], [ self.list[ index ].x_pos, self.list[ index ].y_pos ])
                         cnt = -1
                         break
 
@@ -189,7 +193,6 @@ if __name__ == '__main__':
     mines = Minesweeper(350, 450, 10)
     v = 10  # пикселей в секунду
     x_pos = 0  # Текущая позиция центра круга
-    radiys = 5  # Начальный радиус круга
     cnt = 0
     running = True
     while running:
@@ -199,10 +202,11 @@ if __name__ == '__main__':
             if event.type == pygame.MOUSEBUTTONDOWN:  # Если событие нажали кнопку мыши
                 if event.button == 3 and cntmines > 0:
                     pos = event.pos
-                    cnt = mines.open_cell(pos, 1)
-                    if cnt < 0:
-                        cntmines -= 1
-                        cnt = 0
+                    if cnt >= 0:
+                        cnt = mines.open_cell(pos, 1)
+                        if cnt < 0:
+                            cntmines -= 1
+                            cnt = 0
 
                 if event.button == 1:
                     pos = event.pos  # Текущая позиция там где нажали кнопку

@@ -62,20 +62,20 @@ class Minesweeper(Board):
                                 screen.blit(flag,
                                             (self.list[index].x_pos + 12,
                                              self.list[index].y_pos + 12))
-                                self.list[ index ].opened = 1
+                                self.list[index].opened = 1
                                 cnt = -2
                             else:
                                 cnt = -3
-                                self.list[ index ].opened = 0
+                                self.list[index].opened = 0
                                 draw_point(screen, [0, 0, 0], [self.list[index].x_pos, self.list[index].y_pos])
                         else:
                             draw_point(screen, [0, 0, 255], [self.list[index].x_pos, self.list[index].y_pos])
-                        pygame.draw.line(screen, [ 255, 255, 255 ],
-                                         [ self.list[ index ].x_pos, self.list[ index ].y_pos ],
-                                         [ self.list[ index ].x_pos, self.list[ index ].y_pos + SCALE ])
-                        pygame.draw.line(screen, [ 255, 255, 255 ],
-                                         [ self.list[ index ].x_pos, self.list[ index ].y_pos ],
-                                         [ self.list[ index ].x_pos + SCALE, self.list[ index ].y_pos ])
+                        pygame.draw.line(screen, [255, 255, 255],
+                                         [self.list[index].x_pos, self.list[index].y_pos],
+                                         [self.list[index].x_pos, self.list[index].y_pos + SCALE])
+                        pygame.draw.line(screen, [255, 255, 255],
+                                         [self.list[index].x_pos, self.list[index].y_pos],
+                                         [self.list[index].x_pos + SCALE, self.list[index].y_pos])
                         break
                 if self.list[index].is_mine == 10:
                     if ((self.list[index].x_pos < x) and
@@ -97,12 +97,12 @@ class Minesweeper(Board):
                             flag = pygame.image.load('mines.jpg')
                             screen.blit(flag, (self.list[index].x_pos + 12, self.list[index].y_pos + 12))
                             cnt = -1
-                        pygame.draw.line(screen, [ 255, 255, 255 ],
-                                         [ self.list[ index ].x_pos, self.list[ index ].y_pos ],
-                                         [ self.list[ index ].x_pos, self.list[ index ].y_pos + SCALE ])
-                        pygame.draw.line(screen, [ 255, 255, 255 ],
-                                         [ self.list[ index ].x_pos, self.list[ index ].y_pos ],
-                                         [ self.list[ index ].x_pos + SCALE, self.list[ index ].y_pos ])
+                        pygame.draw.line(screen, [255, 255, 255],
+                                         [self.list[index].x_pos, self.list[index].y_pos],
+                                         [self.list[index].x_pos, self.list[index].y_pos + SCALE])
+                        pygame.draw.line(screen, [255, 255, 255],
+                                         [ self.list[index].x_pos, self.list[index].y_pos],
+                                         [ self.list[index].x_pos + SCALE, self.list[index].y_pos])
                         break
 
                     if ((self.list[index].x_pos < (x - SCALE)) and

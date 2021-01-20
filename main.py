@@ -101,8 +101,8 @@ class Minesweeper(Board):
                                          [self.list[index].x_pos, self.list[index].y_pos],
                                          [self.list[index].x_pos, self.list[index].y_pos + SCALE])
                         pygame.draw.line(screen, [255, 255, 255],
-                                         [ self.list[index].x_pos, self.list[index].y_pos],
-                                         [ self.list[index].x_pos + SCALE, self.list[index].y_pos])
+                                         [self.list[index].x_pos, self.list[index].y_pos],
+                                         [self.list[index].x_pos + SCALE, self.list[index].y_pos])
                         break
 
                     if ((self.list[index].x_pos < (x - SCALE)) and
@@ -208,7 +208,7 @@ def fill(screen_color, bcolor=None):
 
 
 def draw_point(surface, color, pos):
-    return pygame.draw.rect(surface, color, [pos[0], pos[1], SCALE, SCALE ])
+    return pygame.draw.rect(surface, color, [pos[0], pos[1], SCALE, SCALE])
 
 
 if __name__ == '__main__':
